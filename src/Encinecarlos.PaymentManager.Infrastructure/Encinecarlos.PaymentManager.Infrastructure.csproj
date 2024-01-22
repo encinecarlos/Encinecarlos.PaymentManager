@@ -7,11 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Encinecarlos.PaymentManager.Domain\Encinecarlos.PaymentManager.Domain.csproj" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="8.0.1" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Data\" />
+    <ProjectReference Include="..\Encinecarlos.PaymentManager.Domain\Encinecarlos.PaymentManager.Domain.csproj" />
   </ItemGroup>
 
 </Project>

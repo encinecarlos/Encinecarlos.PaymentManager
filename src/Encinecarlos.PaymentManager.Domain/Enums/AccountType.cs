@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Encinecarlos.PaymentManager.Infrastructure.Entities
+namespace Encinecarlos.PaymentManager.Domain.Enums
 {
-    internal class Account
+    internal class AccountType
     {
     }
 }
