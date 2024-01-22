@@ -1,0 +1,6 @@
+@Encinecarlos.PàymentManager.Api_HostAddress = http://localhost:5166
+
+GET {{Encinecarlos.PàymentManager.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
