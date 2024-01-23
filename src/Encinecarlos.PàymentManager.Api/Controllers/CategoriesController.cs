@@ -1,7 +1,7 @@
-﻿using Encinecarlos.PaymentManager.Application.Category.Command;
-using Encinecarlos.PaymentManager.Application.Category.dto;
+﻿using Encinecarlos.PaymentManager.Application.Categories.Command;
+using Encinecarlos.PaymentManager.Application.Categories.dto;
+using Encinecarlos.PaymentManager.Application.Categories.Query;
 using MediatR;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Encinecarlos.PàymentManager.Api.Controllers
@@ -15,6 +15,13 @@ namespace Encinecarlos.PàymentManager.Api.Controllers
         public CategoriesController(IMediator mediator)
         {
             _mediator = mediator;
+        }
+
+        [HttpGet]
+        public async Task<IEnumerable<GetCategoriesDto>> GetAll([FromQuery] GetCategoriesRequest request, CancellationToken cancellationToken)
+        {
+            var response = await _mediator.Send(new GetCategoriesQuery { Filters = request }, cancellationToken);
+            return response;
         }
 
         [HttpPost]

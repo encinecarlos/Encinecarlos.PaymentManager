@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Encinecarlos.PaymentManager.Application.Category.dto
+namespace Encinecarlos.PaymentManager.Application.Categories.dto
 {
     public class CategoryDto
     {
