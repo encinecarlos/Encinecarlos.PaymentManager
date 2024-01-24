@@ -1,0 +1,26 @@
+version: "3.0"
+
+services:
+    payment.api:
+        hostname: payment-api
+        container_name: payment-api
+        networks:
+           - payment-net
+        restart: always
+        build:
+            context: ../src
+            dockerfile: ../src/Encinecarlos.PaymentManager.Api/Dockerfile
+        ports:
+            - 9020:80
+            - 9023:443
+        deploy:
+            resources:
+                limits:
+                    cpus: "0.25"
+                    memory: 0.5GB
+                reservations:
+                    cpus: "0.25"
+                    memory: 500M
+networks:
+    payment-net:
+        driver: bridge
