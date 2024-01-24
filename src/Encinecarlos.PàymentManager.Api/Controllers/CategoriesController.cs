@@ -30,5 +30,26 @@ namespace Encinecarlos.PàymentManager.Api.Controllers
             var response = await _mediator.Send(new AddCategoryCommand { Category = request }, cancellationToken);
             return response;
         }
+
+        [HttpGet("{categoryId}")]
+        public async Task<GetCategoriesDto> GetById([FromRoute] GetCategoryByIdRequest request, CancellationToken cancellationToken)
+        {
+            var response = await _mediator.Send(new GetCategoryByIdQuery { Catgory =  request }, cancellationToken);
+            return response;
+        }
+
+        [HttpPut("{categoryId}")]
+        public async Task<UpdateCategoryDto> UpdateCategory([FromRoute] Guid categoryId, CategoryRequest category, CancellationToken cancellationToken)
+        {
+            var response = await _mediator.Send(new UpdateCategoryCommand { CategoryId = categoryId, Category = category }, cancellationToken);
+            return response;
+        }
+
+        [HttpDelete("{categoryId}")]
+        public async Task<RemoveCategoryDto> RemoveCategory(Guid categoryId, CancellationToken cancellationToken)
+        {
+            var response = await _mediator.Send(new RemoveCategoryCommand { CategoryId = categoryId }, cancellationToken);
+            return response;
+        }
     }
 }

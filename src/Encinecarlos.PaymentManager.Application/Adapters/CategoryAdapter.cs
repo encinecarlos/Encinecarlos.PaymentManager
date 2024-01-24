@@ -18,6 +18,18 @@ namespace Encinecarlos.PaymentManager.Application.Adapters
             };
                        
         }
+        
+        public static Category ToEntity(Guid categoryId, CategoryRequest request)
+        {
+            return new Category
+            {
+                Id = categoryId,
+                Name = request.Name,
+                Description = request.Description ?? string.Empty,
+                UpdatedAt = DateTime.UtcNow
+            };
+                       
+        }
 
         public static CategoryDto ToCategoryDto(Category category)
         {
