@@ -10,6 +10,9 @@ FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
 COPY ["src/Encinecarlos.PaymentManager.Api/Encinecarlos.PaymentManager.Api.csproj", "src/Encinecarlos.PaymentManager.Api/"]
+COPY ["src/Encinecarlos.PaymentManager.Application/Encinecarlos.PaymentManager.Application.csproj", "src/Encinecarlos.PaymentManager.Application/"]
+COPY ["src/Encinecarlos.PaymentManager.Domain/Encinecarlos.PaymentManager.Domain.csproj", "src/Encinecarlos.PaymentManager.Domain/"]
+COPY ["src/Encinecarlos.PaymentManager.Infrastructure/Encinecarlos.PaymentManager.Infrastructure.csproj", "src/Encinecarlos.PaymentManager.Infrastructure/"]
 RUN dotnet restore "./src/Encinecarlos.PaymentManager.Api/./Encinecarlos.PaymentManager.Api.csproj"
 COPY . .
 WORKDIR "/src/src/Encinecarlos.PaymentManager.Api"
