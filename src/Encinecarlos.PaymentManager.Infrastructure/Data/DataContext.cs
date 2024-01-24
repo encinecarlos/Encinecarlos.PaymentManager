@@ -1,6 +1,5 @@
 ﻿using Encinecarlos.PaymentManager.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
-using System.Transactions;
 
 namespace Encinecarlos.PaymentManager.Infrastructure.Data
 {
@@ -12,5 +11,10 @@ namespace Encinecarlos.PaymentManager.Infrastructure.Data
 
         public DbSet<Category> Categories { get; set; }
         public DbSet<Transaction> Transactions { get; set; }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.UseInMemoryDatabase("payments");
+        }
     }
 }
