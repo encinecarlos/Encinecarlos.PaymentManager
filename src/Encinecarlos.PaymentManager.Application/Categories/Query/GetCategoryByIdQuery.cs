@@ -1,7 +1,7 @@
-﻿using Encinecarlos.PaymentManager.Application.Categories.dto;
+﻿using Encinecarlos.PaymentManager.Application.Transaction.dto;
 using MediatR;
 
-namespace Encinecarlos.PaymentManager.Application.Categories.Query
+namespace Encinecarlos.PaymentManager.Application.Transaction.Query
 {
     public class GetCategoryByIdQuery : IRequest<GetCategoriesDto>
     {

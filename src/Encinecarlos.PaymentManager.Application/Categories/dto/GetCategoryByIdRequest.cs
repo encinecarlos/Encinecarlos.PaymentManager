@@ -1,4 +1,4 @@
-﻿namespace Encinecarlos.PaymentManager.Application.Categories.dto
+﻿namespace Encinecarlos.PaymentManager.Application.Transaction.dto
 {
     public class GetCategoryByIdRequest
     {

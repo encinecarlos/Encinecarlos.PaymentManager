@@ -26,15 +26,15 @@ namespace Encinecarlos.PàymentManager.Api.Controllers
             => await _mediator.Send(new AddTransactionCommand { Transaction = request }, cancellationToken);
 
         [HttpGet("{transactionId}")]
-        public async Task<IActionResult> GetById(string transactionId)
+        public async Task<GetTransactionByIdResponse> GetById(string transactionId)
         {
-            return Ok();
+            return await _mediator.Send(new GetTransactionByIdQuery { TransactionId = transactionId });
         }
 
         [HttpPatch("{transactionId}")]
-        public async Task<IActionResult> UpdateTransaction(string transactionId)
+        public async Task<GetTransactionByIdResponse> UpdateTransaction(string transactionId)
         {
-            return Ok();
+             
         }
 
         [HttpDelete("{transactionId}")]

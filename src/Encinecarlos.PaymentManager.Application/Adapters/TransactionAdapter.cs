@@ -29,6 +29,25 @@ namespace Encinecarlos.PaymentManager.Application.Adapters
                 UpdatedAt = null,
             };
         }
+        
+        public static Domain.Entities.Transaction ToEntity(UpdateTransactionRequest request)
+        {
+            return new Domain.Entities.Transaction
+            {
+                Id = Guid.NewGuid(),
+                CategoryId = request?.CategoryId,
+                Amount = request?.Amount ?? 0,
+                Description = request.Description,
+                Name = request?.Name ?? string.Empty,
+                IsPaid = request.IsPaid ?? false,
+                IsRecurrency = request.IsRecurrency ?? false,
+                PaymentMethod = request.PaymentMethod ?? Domain.Enums.PaymentMethod.None,
+                Type = request.Type ?? Domain.Enums.TransactionType.None,
+                PaymentOverdue = request.PaymentOverdue ?? DateTime.UtcNow,
+                CreatedAt = null,
+                UpdatedAt = DateTime.UtcNow,
+            };
+        }
 
         public static TransactionDto ToDto(Domain.Entities.Transaction transaction)
         {
