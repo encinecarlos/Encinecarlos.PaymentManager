@@ -28,15 +28,15 @@ namespace Encinecarlos.PaymentManager.Infrastructure.Repositories
             _context.SaveChanges();
         }
 
-        public async Task SaveAsync(Category category)
+        public async Task SaveAsync(Category data)
         {
-            _context.Categories.Add(category);
+            _context.Categories.Add(data);
             await _context.SaveChangesAsync();
         }
 
-        public async Task UpdateAsync(Category category)
+        public async Task UpdateAsync(Category data)
         {
-            _context.Update(category);
+            _context.Update(data);
             await _context.SaveChangesAsync();
         }
     }

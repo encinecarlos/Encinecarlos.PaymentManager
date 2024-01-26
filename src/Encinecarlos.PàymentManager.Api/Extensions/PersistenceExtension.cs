@@ -13,6 +13,7 @@ namespace Encinecarlos.PàymentManager.Api.Extensions
             services.AddDbContext<DataContext>();
 
             services.AddScoped<IRepository<Category, Guid>, CategoryRepository>();
+            services.AddScoped<ITransactionRepository, TransactionRepository>();
         }
     }
 }
