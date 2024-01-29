@@ -1,4 +1,4 @@
-using Encinecarlos.PàymentManager.Api.Extensions;
+using Encinecarlos.PaymentManager.Api.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
