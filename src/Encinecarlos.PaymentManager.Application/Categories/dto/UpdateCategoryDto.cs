@@ -1,4 +1,4 @@
-﻿namespace Encinecarlos.PaymentManager.Application.Transaction.dto
+﻿namespace Encinecarlos.PaymentManager.Application.Categories.dto
 {
     public class UpdateCategoryDto
     {

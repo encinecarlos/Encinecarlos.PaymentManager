@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34322.80
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Encinecarlos.PàymentManager.Api", "src\Encinecarlos.PàymentManager.Api\Encinecarlos.PàymentManager.Api.csproj", "{7EBD57E9-EA73-49DA-946E-1E46114A81D1}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Encinecarlos.PaymentManager.Application", "src\Encinecarlos.PaymentManager.Application\Encinecarlos.PaymentManager.Application.csproj", "{2ECEDAA6-3019-4733-8B09-D7EF3F34A5F1}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Encinecarlos.PaymentManager.Domain", "src\Encinecarlos.PaymentManager.Domain\Encinecarlos.PaymentManager.Domain.csproj", "{C51359FF-4423-4884-807F-FA47FC5BB1DF}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Encinecarlos.PaymentManager.Infrastructure", "src\Encinecarlos.PaymentManager.Infrastructure\Encinecarlos.PaymentManager.Infrastructure.csproj", "{57C16465-6478-447D-AC21-426462BEC8BA}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Encinecarlos.PaymentManager.Api", "src\Encinecarlos.PaymentManager.Api\Encinecarlos.PaymentManager.Api.csproj", "{33594F28-AB9E-4A48-BB1F-676B16A14AE8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{7EBD57E9-EA73-49DA-946E-1E46114A81D1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7EBD57E9-EA73-49DA-946E-1E46114A81D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7EBD57E9-EA73-49DA-946E-1E46114A81D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7EBD57E9-EA73-49DA-946E-1E46114A81D1}.Release|Any CPU.Build.0 = Release|Any CPU
 		{2ECEDAA6-3019-4733-8B09-D7EF3F34A5F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{2ECEDAA6-3019-4733-8B09-D7EF3F34A5F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2ECEDAA6-3019-4733-8B09-D7EF3F34A5F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -33,6 +29,10 @@ Global
 		{57C16465-6478-447D-AC21-426462BEC8BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{57C16465-6478-447D-AC21-426462BEC8BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{57C16465-6478-447D-AC21-426462BEC8BA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{33594F28-AB9E-4A48-BB1F-676B16A14AE8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{33594F28-AB9E-4A48-BB1F-676B16A14AE8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{33594F28-AB9E-4A48-BB1F-676B16A14AE8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{33594F28-AB9E-4A48-BB1F-676B16A14AE8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

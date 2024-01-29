@@ -5,7 +5,7 @@ using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Encinecarlos.PàymentManager.Api.Controllers
+namespace Encinecarlos.PaymentManager.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -19,11 +19,11 @@ namespace Encinecarlos.PàymentManager.Api.Controllers
         }
 
         [HttpGet]
-        public async Task<GetTransactionsResponse> GetTransactions() 
+        public async Task<GetTransactionsResponse> GetTransactions()
             => await _mediator.Send(new GetTransactionsQuery());
 
         [HttpPost]
-        public async Task<AddTransactionResponse> SaveTransaction(AddTransactionRequest request, CancellationToken cancellationToken) 
+        public async Task<AddTransactionResponse> SaveTransaction(AddTransactionRequest request, CancellationToken cancellationToken)
             => await _mediator.Send(new AddTransactionCommand { Transaction = request }, cancellationToken);
 
         [HttpGet("{transactionId}")]
@@ -40,7 +40,7 @@ namespace Encinecarlos.PàymentManager.Api.Controllers
 
         [HttpDelete("{transactionId}")]
         public async Task<RemoveTransactionResponse> RemoveTransaction(string transactionId)
-        {  
+        {
             return await _mediator.Send(new RemoveTransactionCommand { TransactionId = transactionId });
         }
 
