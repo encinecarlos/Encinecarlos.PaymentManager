@@ -1,4 +1,4 @@
-﻿using Encinecarlos.PaymentManager.Application.Transaction.dto;
+﻿using Encinecarlos.PaymentManager.Application.Categories.dto;
 using Encinecarlos.PaymentManager.Domain.Entities;
 using System.Security.Cryptography.X509Certificates;
 

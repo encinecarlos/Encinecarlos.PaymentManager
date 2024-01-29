@@ -1,7 +1,7 @@
-﻿using Encinecarlos.PaymentManager.Application.Transaction.dto;
+﻿using Encinecarlos.PaymentManager.Application.Categories.dto;
 using MediatR;
 
-namespace Encinecarlos.PaymentManager.Application.Transaction.Command
+namespace Encinecarlos.PaymentManager.Application.Categories.Command
 {
     public class UpdateCategoryCommand : IRequest<UpdateCategoryDto>
     {

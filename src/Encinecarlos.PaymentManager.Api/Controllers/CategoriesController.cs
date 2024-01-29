@@ -1,10 +1,10 @@
-﻿using Encinecarlos.PaymentManager.Application.Transaction.Command;
-using Encinecarlos.PaymentManager.Application.Transaction.dto;
-using Encinecarlos.PaymentManager.Application.Transaction.Query;
+﻿using Encinecarlos.PaymentManager.Application.Categories.Command;
+using Encinecarlos.PaymentManager.Application.Categories.dto;
+using Encinecarlos.PaymentManager.Application.Categories.Query;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Encinecarlos.PàymentManager.Api.Controllers
+namespace Encinecarlos.PaymentManager.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -34,7 +34,7 @@ namespace Encinecarlos.PàymentManager.Api.Controllers
         [HttpGet("{categoryId}")]
         public async Task<GetCategoriesDto> GetById([FromRoute] GetCategoryByIdRequest request, CancellationToken cancellationToken)
         {
-            var response = await _mediator.Send(new GetCategoryByIdQuery { Catgory =  request }, cancellationToken);
+            var response = await _mediator.Send(new GetCategoryByIdQuery { Catgory = request }, cancellationToken);
             return response;
         }
 

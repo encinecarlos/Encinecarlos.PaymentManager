@@ -1,9 +1,10 @@
-﻿using Encinecarlos.PaymentManager.Application.Transaction.dto;
+﻿using Encinecarlos.PaymentManager.Application.Categories.Command;
+using Encinecarlos.PaymentManager.Application.Categories.dto;
 using Encinecarlos.PaymentManager.Domain.Entities;
 using Encinecarlos.PaymentManager.Domain.Interfaces;
 using MediatR;
 
-namespace Encinecarlos.PaymentManager.Application.Transaction.Command
+namespace Encinecarlos.PaymentManager.Application.Categories.Command
 {
     public class RemoveCategoryHandler : IRequestHandler<RemoveCategoryCommand, RemoveCategoryDto>
     {

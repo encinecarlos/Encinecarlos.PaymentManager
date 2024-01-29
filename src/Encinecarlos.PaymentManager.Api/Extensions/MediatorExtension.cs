@@ -1,6 +1,6 @@
 ﻿using System.Reflection;
 
-namespace Encinecarlos.PàymentManager.Api.Extensions
+namespace Encinecarlos.PaymentManager.Api.Extensions
 {
     public static class MediatorExtension
     {

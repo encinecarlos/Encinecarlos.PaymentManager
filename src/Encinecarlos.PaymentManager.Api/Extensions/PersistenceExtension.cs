@@ -4,7 +4,7 @@ using Encinecarlos.PaymentManager.Infrastructure.Data;
 using Encinecarlos.PaymentManager.Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
 
-namespace Encinecarlos.PàymentManager.Api.Extensions
+namespace Encinecarlos.PaymentManager.Api.Extensions
 {
     public static class PersistenceExtension
     {
