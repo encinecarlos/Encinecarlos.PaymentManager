@@ -39,9 +39,9 @@ namespace Encinecarlos.PaymentManager.Application.Transaction.Query
                     Description = transaction.Description,
                     IsPaid = transaction.IsPaid,
                     IsRecurrency = transaction.IsRecurrency,
-                    PaymentMethod = transaction.PaymentMethod,
+                    PaymentMethod = transaction.PaymentMethod.ToString(),
                     PaymentOverdue = transaction.PaymentOverdue,
-                    Type = transaction.Type,
+                    Type = transaction.Type.ToString(),
                 });
             }
 

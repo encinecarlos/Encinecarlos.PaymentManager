@@ -5,11 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Encinecarlos.PaymentManager.Application.Transaction.Dto
+namespace Encinecarlos.PaymentManager.Application.Transaction.Command
 {
-    public class TransactionDto
+    public class AddTransactionDto
     {
-        public string TransactionId { get; set; }
         public string Name { get; init; }
         public string? Description { get; init; }
         public string Type { get; init; }

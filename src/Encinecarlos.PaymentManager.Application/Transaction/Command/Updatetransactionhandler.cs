@@ -20,7 +20,7 @@ namespace Encinecarlos.PaymentManager.Application.Transaction.Command
 
         public async Task<UpdateTransactionResponse> Handle(UpdateTransactionCommand request, CancellationToken cancellationToken)
         {
-            var transaction = TransactionAdapter.ToEntity(request.transaction);
+            var transaction = TransactionAdapter.ToEntity(request.TransactionId, request.Transaction);
             await _repository.UpdateAsync(transaction);
             return await Task.FromResult(new UpdateTransactionResponse());
         }

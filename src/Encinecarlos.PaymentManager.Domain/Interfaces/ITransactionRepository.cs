@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Encinecarlos.PaymentManager.Domain.Interfaces
 {
-    public interface ITransactionRepository : IRepository<Transaction, Guid>
+    public interface ITransactionRepository : IRepository<Transaction?, Guid>
     {
     }
 }

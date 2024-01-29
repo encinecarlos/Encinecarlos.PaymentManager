@@ -16,6 +16,12 @@ namespace Encinecarlos.PaymentManager.Application.Transaction.Query
         public async Task<GetTransactionByIdResponse> Handle(GetTransactionByIdQuery request, CancellationToken cancellationToken)
         {
             var transaction = await _repository.GetByIdAsync(Guid.Parse(request.TransactionId));
+
+            if(transaction is null)
+            {
+                return await Task.FromResult(new GetTransactionByIdResponse());
+            }
+
             var transactionDto = TransactionAdapter.ToDto(transaction);
             return await Task.FromResult(new GetTransactionByIdResponse { Transaction = transactionDto });
         }

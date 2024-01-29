@@ -1,6 +1,7 @@
 ﻿using Encinecarlos.PaymentManager.Application.Transaction.Command;
 using Encinecarlos.PaymentManager.Application.Transaction.Dto;
 using Encinecarlos.PaymentManager.Domain.Entities;
+using Encinecarlos.PaymentManager.Domain.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,27 +23,27 @@ namespace Encinecarlos.PaymentManager.Application.Adapters
                 Name = request.Transaction.Name,
                 IsPaid = request.Transaction.IsPaid,
                 IsRecurrency = request.Transaction.IsRecurrency,
-                PaymentMethod = request.Transaction.PaymentMethod,
-                Type = request.Transaction.Type,
+                PaymentMethod = Enum.TryParse<PaymentMethod>(request.Transaction.PaymentMethod, out var method) ? method: PaymentMethod.None,
+                Type = Enum.TryParse<TransactionType>(request.Transaction.Type, out var type) ? type : TransactionType.None,
                 PaymentOverdue = request.Transaction.PaymentOverdue,
                 CreatedAt = DateTime.UtcNow,
                 UpdatedAt = null,
             };
         }
         
-        public static Domain.Entities.Transaction ToEntity(UpdateTransactionRequest request)
+        public static Domain.Entities.Transaction ToEntity(string transactionId, UpdateTransactionRequest request)
         {
             return new Domain.Entities.Transaction
             {
-                Id = Guid.NewGuid(),
+                Id = Guid.Parse(transactionId),
                 CategoryId = request?.CategoryId,
                 Amount = request?.Amount ?? 0,
-                Description = request.Description,
+                Description = request?.Description,
                 Name = request?.Name ?? string.Empty,
-                IsPaid = request.IsPaid ?? false,
-                IsRecurrency = request.IsRecurrency ?? false,
-                PaymentMethod = request.PaymentMethod ?? Domain.Enums.PaymentMethod.None,
-                Type = request.Type ?? Domain.Enums.TransactionType.None,
+                IsPaid = request?.IsPaid ?? false,
+                IsRecurrency = request?.IsRecurrency ?? false,
+                PaymentMethod = Enum.TryParse<PaymentMethod>(request.PaymentMethod, out var method) ? method : PaymentMethod.None,
+                Type = Enum.TryParse<TransactionType>(request.Type, out var type) ? type : TransactionType.None,
                 PaymentOverdue = request.PaymentOverdue ?? DateTime.UtcNow,
                 CreatedAt = null,
                 UpdatedAt = DateTime.UtcNow,
@@ -53,13 +54,16 @@ namespace Encinecarlos.PaymentManager.Application.Adapters
         {
             return new TransactionDto
             {
+                TransactionId = transaction.Id.ToString(),
                 Name = transaction.Name,
                 Description = transaction.Description,
                 Amount = transaction.Amount,
                 CategoryId = transaction.CategoryId,
+                PaymentOverdue = transaction.PaymentOverdue,
+                Type = transaction.Type.ToString(),
                 IsPaid = transaction.IsPaid,
                 IsRecurrency = transaction.IsRecurrency,
-                PaymentMethod = transaction.PaymentMethod,
+                PaymentMethod = transaction.PaymentMethod.ToString(),
             };
         }
     }

@@ -1,4 +1,5 @@
 ﻿using Encinecarlos.PaymentManager.Application.Transaction.Command;
+using Encinecarlos.PaymentManager.Application.Transaction.Dto;
 using Encinecarlos.PaymentManager.Application.Transaction.Query;
 using MediatR;
 using Microsoft.AspNetCore.Http;
@@ -32,15 +33,15 @@ namespace Encinecarlos.PàymentManager.Api.Controllers
         }
 
         [HttpPatch("{transactionId}")]
-        public async Task<GetTransactionByIdResponse> UpdateTransaction(string transactionId)
+        public async Task<UpdateTransactionResponse> UpdateTransaction(string transactionId, UpdateTransactionRequest request)
         {
-             
+            return await _mediator.Send(new UpdateTransactionCommand { Transaction = request, TransactionId = transactionId });
         }
 
         [HttpDelete("{transactionId}")]
-        public async Task<IActionResult> RemoveTransaction(string transactionId)
+        public async Task<RemoveTransactionResponse> RemoveTransaction(string transactionId)
         {  
-            return Ok();
+            return await _mediator.Send(new RemoveTransactionCommand { TransactionId = transactionId });
         }
 
     }

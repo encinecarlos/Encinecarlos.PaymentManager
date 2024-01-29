@@ -7,6 +7,6 @@ namespace Encinecarlos.PaymentManager.Application.Transaction.Command
 {
     public class AddTransactionRequest : IRequest<AddTransactionResponse>
     {
-        public TransactionDto Transaction { get; set; }
+        public AddTransactionDto Transaction { get; set; }
     }
 }
