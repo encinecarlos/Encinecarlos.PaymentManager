@@ -1,5 +1,4 @@
-﻿using Encinecarlos.PaymentManager.Application.Transaction.dto;
-using MediatR;
+﻿using MediatR;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace Encinecarlos.PaymentManager.Application.Transaction.Command
 {
-    public class AddCategoryCommand : IRequest<CategoryDto>
+    public class AddTransactionCommand : IRequest<AddTransactionResponse>
     {
-        public CategoryRequest Category { get; set; }
+        public AddTransactionRequest Transaction { get; set; }
     }
 }

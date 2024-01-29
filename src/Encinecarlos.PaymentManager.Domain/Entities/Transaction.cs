@@ -6,7 +6,7 @@ namespace Encinecarlos.PaymentManager.Domain.Entities
     {
         public string Name { get; init; }
         public string? Description { get; init; }
-        public Category Category { get; init; }
+        public string CategoryId { get; init; }
         public TransactionType Type { get; init; }
         public decimal Amount { get; init; }
         public PaymentMethod PaymentMethod { get; init; }

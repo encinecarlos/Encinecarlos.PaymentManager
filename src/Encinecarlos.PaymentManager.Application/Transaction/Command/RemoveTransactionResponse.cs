@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Encinecarlos.PaymentManager.Application.Transaction.dto
+namespace Encinecarlos.PaymentManager.Application.Transaction.Command
 {
-    public class RemoveCategoryDto
+    public class RemoveTransactionResponse
     {
     }
 }
