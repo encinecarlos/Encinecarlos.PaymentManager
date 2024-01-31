@@ -10,7 +10,11 @@ namespace Encinecarlos.PaymentManager.Api.Extensions
     {
         public static void AddPersistenceContext(this IServiceCollection services, IConfiguration configuration)
         {
-            services.AddDbContext<DataContext>();
+            services.AddDbContext<DataContext>(ctx =>
+            {
+                var dbConfiguration = configuration.GetSection("ConnectionStrings");
+                ctx.UseCosmos(dbConfiguration["Connection"], dbConfiguration["DatabaseId"]);
+            });
 
             services.AddScoped<IRepository<Category, Guid>, CategoryRepository>();
             services.AddScoped<ITransactionRepository, TransactionRepository>();
