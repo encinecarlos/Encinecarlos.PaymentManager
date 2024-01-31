@@ -12,9 +12,9 @@ namespace Encinecarlos.PaymentManager.Infrastructure.Data
         public DbSet<Category> Categories { get; set; }
         public DbSet<Transaction> Transactions { get; set; }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            optionsBuilder.UseInMemoryDatabase("payments");
+            modelBuilder.Entity<Transaction>().ToContainer("Transactions");
         }
     }
 }
