@@ -12,8 +12,8 @@ namespace Encinecarlos.PaymentManager.Api.Extensions
         {
             services.AddDbContext<DataContext>(ctx =>
             {
-                var dbConfiguration = configuration.GetSection("ConnectionStrings");
-                ctx.UseCosmos(dbConfiguration["Connection"], dbConfiguration["DatabaseId"]);
+                ctx.UseCosmos(configuration.GetSection("Connection").Value,
+                              configuration.GetSection("DatabaseId").Value);
             });
 
             services.AddScoped<IRepository<Category, Guid>, CategoryRepository>();
