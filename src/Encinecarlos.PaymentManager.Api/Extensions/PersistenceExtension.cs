@@ -16,7 +16,6 @@ namespace Encinecarlos.PaymentManager.Api.Extensions
                               configuration.GetSection("DatabaseId").Value);
             });
 
-            services.AddScoped<IRepository<Category, Guid>, CategoryRepository>();
             services.AddScoped<ITransactionRepository, TransactionRepository>();
         }
     }
