@@ -22,7 +22,10 @@ namespace Encinecarlos.PaymentManager.Application.Transaction.Command
         {
             var transaction = TransactionAdapter.ToEntity(request.Transaction);
             await _repository.SaveAsync(transaction);
-            return await Task.FromResult(new AddTransactionResponse());
+            return await Task.FromResult(new AddTransactionResponse 
+            { 
+                TransactionId = transaction.Id.ToString()
+            });
         }
     }
 }
