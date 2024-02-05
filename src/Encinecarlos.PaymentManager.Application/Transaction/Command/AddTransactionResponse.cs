@@ -2,5 +2,6 @@
 {
     public class AddTransactionResponse
     {
+        public string TransactionId { get; set; }
     }
 }
