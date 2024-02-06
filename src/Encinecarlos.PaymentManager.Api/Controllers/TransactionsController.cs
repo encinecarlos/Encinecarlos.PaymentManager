@@ -20,7 +20,7 @@ namespace Encinecarlos.PaymentManager.Api.Controllers
         }
 
         [HttpGet]
-        [ProducesResponseType(typeof(AddTransactionResponse), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(GetTransactionsResponse), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<GetTransactionsResponse>> GetTransactions()
             => await _mediator.Send(new GetTransactionsQuery());
