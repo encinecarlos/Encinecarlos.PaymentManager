@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Encinecarlos.PaymentManager.Application.Transaction.Command
 {
-    public class TransactionHandler : IRequestHandler<AddTransactionCommand, AddTransactionResponse>
+    public class TransactionHandler : IRequestHandler<AddTransactionRequest, AddTransactionResponse>
     {
         private readonly ITransactionRepository _repository;
 
@@ -18,9 +18,9 @@ namespace Encinecarlos.PaymentManager.Application.Transaction.Command
             _repository = repository;
         }
 
-        public async Task<AddTransactionResponse> Handle(AddTransactionCommand request, CancellationToken cancellationToken)
+        public async Task<AddTransactionResponse> Handle(AddTransactionRequest request, CancellationToken cancellationToken)
         {
-            var transaction = TransactionAdapter.ToEntity(request.Transaction);
+            var transaction = TransactionAdapter.ToEntity(request);
             await _repository.SaveAsync(transaction);
             return await Task.FromResult(new AddTransactionResponse 
             { 
