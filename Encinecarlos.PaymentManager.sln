@@ -11,6 +11,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Encinecarlos.PaymentManager
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Encinecarlos.PaymentManager.Api", "src\Encinecarlos.PaymentManager.Api\Encinecarlos.PaymentManager.Api.csproj", "{33594F28-AB9E-4A48-BB1F-676B16A14AE8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Encinecarlos.PàymentManager.Test", "test\Encinecarlos.PàymentManager.Test\Encinecarlos.PàymentManager.Test.csproj", "{ADD1A8DE-1422-4245-819E-DA80CBFA021D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{33594F28-AB9E-4A48-BB1F-676B16A14AE8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{33594F28-AB9E-4A48-BB1F-676B16A14AE8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{33594F28-AB9E-4A48-BB1F-676B16A14AE8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ADD1A8DE-1422-4245-819E-DA80CBFA021D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ADD1A8DE-1422-4245-819E-DA80CBFA021D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ADD1A8DE-1422-4245-819E-DA80CBFA021D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ADD1A8DE-1422-4245-819E-DA80CBFA021D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
