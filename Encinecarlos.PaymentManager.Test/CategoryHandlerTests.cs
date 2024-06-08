@@ -13,7 +13,7 @@ namespace Encinecarlos.PaymentManager.tests
 {
     public class CategoryHandlerTests
     {
-        [Fact]
+        [Fact(DisplayName = "Should save category on database")]
         public async Task Handle_ShouldCallSaveAsyncOnRepository_WhenCalledWithValidRequest()
         {
             // Arrange
