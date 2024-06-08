@@ -6,7 +6,7 @@ using MediatR;
 
 namespace Encinecarlos.PaymentManager.Application.Categories.Command
 {
-    public class UpdateCategoryHandler : IRequestHandler<UpdateCategoryCommand, UpdateCategoryDto>
+    public class UpdateCategoryHandler : IRequestHandler<UpdateCategoryDto, UpdatedCategoryDto>
     {
         private readonly IRepository<Category, Guid> _repository;
 
@@ -15,11 +15,11 @@ namespace Encinecarlos.PaymentManager.Application.Categories.Command
             _repository = repository;
         }
 
-        public async Task<UpdateCategoryDto> Handle(UpdateCategoryCommand request, CancellationToken cancellationToken)
+        public async Task<UpdatedCategoryDto> Handle(UpdateCategoryDto request, CancellationToken cancellationToken)
         {
-            var category = CategoryAdapter.ToEntity(request.CategoryId, request.Category);
+            var category = CategoryAdapter.ToEntity(request);
             await _repository.UpdateAsync(category);
-            return await Task.FromResult(new UpdateCategoryDto());
+            return await Task.FromResult(new UpdatedCategoryDto());
         }
     }
 }

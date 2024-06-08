@@ -5,7 +5,7 @@ using MediatR;
 
 namespace Encinecarlos.PaymentManager.Application.Categories.Command
 {
-    public class RemoveCategoryHandler : IRequestHandler<RemoveCategoryCommand, RemoveCategoryDto>
+    public class RemoveCategoryHandler : IRequestHandler<RemoveCategoryDto, dto.RemovedCategoryDto>
     {
         private readonly IRepository<Category, Guid> _repository;
 
@@ -14,10 +14,10 @@ namespace Encinecarlos.PaymentManager.Application.Categories.Command
             _repository = repository;
         }
 
-        public async Task<RemoveCategoryDto> Handle(RemoveCategoryCommand request, CancellationToken cancellationToken)
+        public async Task<dto.RemovedCategoryDto> Handle(RemoveCategoryDto request, CancellationToken cancellationToken)
         {
             await _repository.RemoveAsync(request.CategoryId);
-            return await Task.FromResult(new RemoveCategoryDto());
+            return await Task.FromResult(new dto.RemovedCategoryDto());
         }
     }
 }

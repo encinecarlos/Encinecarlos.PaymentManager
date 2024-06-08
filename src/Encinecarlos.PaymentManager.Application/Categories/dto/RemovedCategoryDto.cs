@@ -6,8 +6,7 @@ using System.Threading.Tasks;
 
 namespace Encinecarlos.PaymentManager.Application.Categories.dto
 {
-    public class CategoryDto
+    public record RemovedCategoryDto
     {
-        public Guid CateogryId { get; set; }
     }
 }

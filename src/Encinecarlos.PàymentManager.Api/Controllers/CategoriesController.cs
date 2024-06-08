@@ -1,5 +1,4 @@
-﻿using Encinecarlos.PaymentManager.Application.Categories.Command;
-using Encinecarlos.PaymentManager.Application.Categories.dto;
+﻿using Encinecarlos.PaymentManager.Application.Categories.dto;
 using Encinecarlos.PaymentManager.Application.Categories.Query;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -25,9 +24,9 @@ namespace Encinecarlos.PàymentManager.Api.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<CategoryDto>> GetCategories(CategoryRequest request, CancellationToken cancellationToken)
+        public async Task<ActionResult<CategoryResultDto>> GetCategories(AddCategoryDto request, CancellationToken cancellationToken)
         {
-            var response = await _mediator.Send(new AddCategoryCommand { Category = request }, cancellationToken);
+            var response = await _mediator.Send(request, cancellationToken);
             return response;
         }
 
@@ -39,16 +38,17 @@ namespace Encinecarlos.PàymentManager.Api.Controllers
         }
 
         [HttpPut("{categoryId}")]
-        public async Task<UpdateCategoryDto> UpdateCategory([FromRoute] Guid categoryId, CategoryRequest category, CancellationToken cancellationToken)
+        public async Task<UpdatedCategoryDto> UpdateCategory([FromRoute] Guid categoryId, UpdateCategoryDto category, CancellationToken cancellationToken)
         {
-            var response = await _mediator.Send(new UpdateCategoryCommand { CategoryId = categoryId, Category = category }, cancellationToken);
+            category.CategoryId = categoryId;
+            var response = await _mediator.Send(category, cancellationToken);
             return response;
         }
 
         [HttpDelete("{categoryId}")]
-        public async Task<RemoveCategoryDto> RemoveCategory(Guid categoryId, CancellationToken cancellationToken)
+        public async Task<RemovedCategoryDto> RemoveCategory(Guid categoryId, CancellationToken cancellationToken)
         {
-            var response = await _mediator.Send(new RemoveCategoryCommand { CategoryId = categoryId }, cancellationToken);
+            var response = await _mediator.Send(new RemoveCategoryDto { CategoryId = categoryId }, cancellationToken);
             return response;
         }
     }

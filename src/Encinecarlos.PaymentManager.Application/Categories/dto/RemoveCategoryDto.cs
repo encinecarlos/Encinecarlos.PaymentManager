@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MediatR;
 
 namespace Encinecarlos.PaymentManager.Application.Categories.dto
 {
-    public class RemoveCategoryDto
+    public record RemoveCategoryDto : IRequest<RemovedCategoryDto>
     {
+        public Guid CategoryId { get; set; }
     }
 }

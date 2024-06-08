@@ -6,7 +6,7 @@ namespace Encinecarlos.PaymentManager.Application.Adapters
 {
     public static class CategoryAdapter
     {
-        public static Category ToEntity(CategoryRequest request)
+        public static Category ToEntity(AddCategoryDto request)
         {
             return new Category
             {
@@ -19,11 +19,11 @@ namespace Encinecarlos.PaymentManager.Application.Adapters
                        
         }
         
-        public static Category ToEntity(Guid categoryId, CategoryRequest request)
+        public static Category ToEntity(UpdateCategoryDto request)
         {
             return new Category
             {
-                Id = categoryId,
+                Id = request.CategoryId,
                 Name = request.Name,
                 Description = request.Description ?? string.Empty,
                 UpdatedAt = DateTime.UtcNow
@@ -31,9 +31,9 @@ namespace Encinecarlos.PaymentManager.Application.Adapters
                        
         }
 
-        public static CategoryDto ToCategoryDto(Category category)
+        public static CategoryResultDto ToCategoryDto(Category category)
         {
-            return new CategoryDto
+            return new CategoryResultDto
             {
                 CateogryId = category.Id,
             };
