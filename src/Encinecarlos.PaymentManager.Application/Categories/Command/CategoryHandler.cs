@@ -1,5 +1,6 @@
 ﻿using Encinecarlos.PaymentManager.Application.Adapters;
 using Encinecarlos.PaymentManager.Application.Categories.dto;
+using Encinecarlos.PaymentManager.Application.Interfaces;
 using Encinecarlos.PaymentManager.Domain.Entities;
 using Encinecarlos.PaymentManager.Domain.Interfaces;
 using MediatR;
@@ -8,13 +9,13 @@ namespace Encinecarlos.PaymentManager.Application.Categories.Command
 {
     public sealed class CategoryHandler : IRequestHandler<AddCategoryDto, CategoryResultDto>
     {
-        private readonly IRepository<Category, Guid> _repository;
+        private readonly ICategoryRepository _repository;
 
-        public CategoryHandler(IRepository<Category, Guid> repository)
+        public CategoryHandler(ICategoryRepository repository)
         {
             _repository = repository;
         }
-        
+
         public async Task<CategoryResultDto> Handle(AddCategoryDto request, CancellationToken cancellationToken)
         {
             var category = CategoryAdapter.ToEntity(request);

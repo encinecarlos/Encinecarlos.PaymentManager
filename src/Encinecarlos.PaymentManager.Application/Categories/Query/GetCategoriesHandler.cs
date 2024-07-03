@@ -1,33 +1,31 @@
-﻿using Encinecarlos.PaymentManager.Application.Categories.dto;
+﻿using Encinecarlos.PaymentManager.Application.Categories.Query.Dto;
+using Encinecarlos.PaymentManager.Application.Interfaces;
 using Encinecarlos.PaymentManager.Domain.Entities;
 using Encinecarlos.PaymentManager.Domain.Interfaces;
 using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Encinecarlos.PaymentManager.Application.Categories.Query
 {
-    public class GetCategoriesHandler : IRequestHandler<GetCategoriesQuery, IEnumerable<GetCategoriesDto>>
+    public sealed class GetCategoriesHandler : IRequestHandler<CategoryDto, IEnumerable<GetCategoryResultDto>>
     {
-        private readonly IRepository<Category, Guid> _repository;
+        private readonly ICategoryRepository _queryRepository;
 
-        public GetCategoriesHandler(IRepository<Category, Guid> repository)
+        public GetCategoriesHandler(ICategoryRepository queryRepository)
         {
-            _repository = repository;
+            _queryRepository = queryRepository;
         }
 
-        public async Task<IEnumerable<GetCategoriesDto>> Handle(GetCategoriesQuery request, CancellationToken cancellationToken)
+        public async Task<IEnumerable<GetCategoryResultDto>> Handle(
+            CategoryDto request,
+            CancellationToken cancellationToken)
         {
-            var categories = await _repository.GetAllAsync();
+            var categories = await _queryRepository.GetAllAsync();
 
-            if(request.Filters.Name is not null || request.Filters.Description is not null) 
+            if (request.Name is not null || request.Description is not null)
             {
-                var filteredCategories = categories.Where(x => 
-                x.Name == request.Filters.Name 
-                || x.Description == request.Filters.Description);
+                var filteredCategories = categories.Where(x =>
+                x.Name == request.Name
+                || x.Description == request.Description);
 
                 return await Task.FromResult(MapResponse(filteredCategories));
             }
@@ -35,20 +33,14 @@ namespace Encinecarlos.PaymentManager.Application.Categories.Query
             return await Task.FromResult(MapResponse(categories));
         }
 
-        private IEnumerable<GetCategoriesDto> MapResponse(IEnumerable<Category> categories)
+        private IEnumerable<GetCategoryResultDto> MapResponse(IEnumerable<Category> categories)
         {
-            var result = new List<GetCategoriesDto>();
-            foreach (var category in categories)
-            {
-                result.Add(new GetCategoriesDto
-                {
-                    CategoryId = category.Id,
-                    Name = category.Name,
-                    Description = category.Description,
-                });
-            }
-
-            return result;
+            return categories.Select(x => new GetCategoryResultDto
+            (
+                x.Id,
+                x.Name,
+                x.Description
+            ));
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using Encinecarlos.PaymentManager.Application.Categories.dto;
 using Encinecarlos.PaymentManager.Application.Categories.Query;
+using Encinecarlos.PaymentManager.Application.Categories.Query.Dto;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -17,23 +18,21 @@ namespace Encinecarlos.PàymentManager.Api.Controllers
         }
 
         [HttpGet]
-        public async Task<IEnumerable<GetCategoriesDto>> GetAll([FromQuery] GetCategoriesRequest request, CancellationToken cancellationToken)
-        {
-            var response = await _mediator.Send(new GetCategoriesQuery { Filters = request }, cancellationToken);
-            return response;
-        }
+        public async Task<IEnumerable<GetCategoryResultDto>> GetAll(
+            [FromQuery] CategoryDto request,
+            CancellationToken cancellationToken)
+            => await _mediator.Send(request, cancellationToken);
 
         [HttpPost]
-        public async Task<ActionResult<CategoryResultDto>> GetCategories(AddCategoryDto request, CancellationToken cancellationToken)
-        {
-            var response = await _mediator.Send(request, cancellationToken);
-            return response;
-        }
+        public async Task<ActionResult<CategoryResultDto>> SaveCategory(
+            AddCategoryDto request,
+            CancellationToken cancellationToken)
+            =>  await _mediator.Send(request, cancellationToken);
 
         [HttpGet("{categoryId}")]
-        public async Task<GetCategoriesDto> GetById([FromRoute] GetCategoryByIdRequest request, CancellationToken cancellationToken)
+        public async Task<GetCategoryResultDto> GetById([FromRoute] CategoryByIdDto request, CancellationToken cancellationToken)
         {
-            var response = await _mediator.Send(new GetCategoryByIdQuery { Catgory =  request }, cancellationToken);
+            var response = await _mediator.Send(request, cancellationToken);
             return response;
         }
 

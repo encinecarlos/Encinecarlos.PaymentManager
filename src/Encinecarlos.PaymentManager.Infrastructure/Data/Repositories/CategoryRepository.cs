@@ -1,12 +1,13 @@
-﻿using Encinecarlos.PaymentManager.Domain.Entities;
+﻿using Encinecarlos.PaymentManager.Application.Interfaces;
+using Encinecarlos.PaymentManager.Domain.Entities;
 using Encinecarlos.PaymentManager.Domain.Interfaces;
 using Encinecarlos.PaymentManager.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
 
-namespace Encinecarlos.PaymentManager.Infrastructure.Repositories
+namespace Encinecarlos.PaymentManager.Infrastructure.Data.Repositories
 {
-    public class CategoryRepository : IRepository<Category, Guid>
+    public class CategoryRepository : ICategoryRepository
     {
         private readonly DataContext _context;
 
@@ -15,10 +16,10 @@ namespace Encinecarlos.PaymentManager.Infrastructure.Repositories
             _context = context;
         }
 
-        public async Task<IEnumerable<Category>> GetAllAsync() 
+        public async Task<IEnumerable<Category>> GetAllAsync()
             => await _context.Categories.ToListAsync();
 
-        public async Task<Category> GetByIdAsync(Guid id) => 
+        public async Task<Category> GetByIdAsync(Guid id) =>
             await _context.Categories.FirstOrDefaultAsync(x => x.Id == id) ?? new Category();
 
         public async Task RemoveAsync(Guid id)

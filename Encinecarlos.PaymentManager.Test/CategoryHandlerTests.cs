@@ -8,6 +8,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Encinecarlos.PaymentManager.Application.Categories.dto;
 using FluentAssertions;
+using Encinecarlos.PaymentManager.Application.Interfaces;
 
 namespace Encinecarlos.PaymentManager.tests
 {
@@ -17,7 +18,7 @@ namespace Encinecarlos.PaymentManager.tests
         public async Task Handle_ShouldCallSaveAsyncOnRepository_WhenCalledWithValidRequest()
         {
             // Arrange
-            var mockRepository = new Mock<IRepository<Category, Guid>>();
+            var mockRepository = new Mock<ICategoryRepository>();
             var handler = new CategoryHandler(mockRepository.Object);
             var request = new AddCategoryDto(It.IsAny<string>(), It.IsAny<string>());
 

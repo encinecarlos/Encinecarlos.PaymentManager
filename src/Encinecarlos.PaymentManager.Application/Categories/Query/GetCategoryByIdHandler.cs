@@ -1,27 +1,26 @@
 ﻿using Encinecarlos.PaymentManager.Application.Adapters;
-using Encinecarlos.PaymentManager.Application.Categories.dto;
-using Encinecarlos.PaymentManager.Domain.Entities;
-using Encinecarlos.PaymentManager.Domain.Interfaces;
+using Encinecarlos.PaymentManager.Application.Categories.Query.Dto;
+using Encinecarlos.PaymentManager.Application.Interfaces;
 using MediatR;
 
 namespace Encinecarlos.PaymentManager.Application.Categories.Query
 {
-    public class GetCategoryByIdHandler : IRequestHandler<GetCategoryByIdQuery, GetCategoriesDto>
+    public sealed class GetCategoryByIdHandler : IRequestHandler<CategoryByIdDto, GetCategoryResultDto>
     {
-        private readonly IRepository<Category, Guid> _repository;
+        private readonly ICategoryRepository _queryRepository;
 
-        public GetCategoryByIdHandler(IRepository<Category, Guid> repository)
+        public GetCategoryByIdHandler(ICategoryRepository queryRepository)
         {
-            _repository = repository;
+            _queryRepository = queryRepository;
         }
 
-        public async Task<GetCategoriesDto> Handle(GetCategoryByIdQuery request, CancellationToken cancellationToken)
+        public async Task<GetCategoryResultDto> Handle(CategoryByIdDto request, CancellationToken cancellationToken)
         {
-            var category = await _repository.GetByIdAsync(request.Catgory.CategoryId);
+            var category = await _queryRepository.GetByIdAsync(request.CategoryId);
 
-            var categoryAdapted = CategoryAdapter.ToDto(category); 
+            var result = CategoryAdapter.MapToGetCategoryResultDto(category);
 
-            return await Task.FromResult(categoryAdapted);
+            return await Task.FromResult(result);            
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using Encinecarlos.PaymentManager.Application.Adapters;
 using Encinecarlos.PaymentManager.Application.Categories.dto;
+using Encinecarlos.PaymentManager.Application.Interfaces;
 using Encinecarlos.PaymentManager.Domain.Entities;
 using Encinecarlos.PaymentManager.Domain.Interfaces;
 using MediatR;
@@ -8,9 +9,9 @@ namespace Encinecarlos.PaymentManager.Application.Categories.Command
 {
     public class UpdateCategoryHandler : IRequestHandler<UpdateCategoryDto, UpdatedCategoryDto>
     {
-        private readonly IRepository<Category, Guid> _repository;
+        private readonly ICategoryRepository _repository;
 
-        public UpdateCategoryHandler(IRepository<Category, Guid> repository)
+        public UpdateCategoryHandler(ICategoryRepository repository)
         {
             _repository = repository;
         }

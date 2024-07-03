@@ -1,7 +1,8 @@
-﻿using Encinecarlos.PaymentManager.Domain.Entities;
+﻿using Encinecarlos.PaymentManager.Application.Interfaces;
+using Encinecarlos.PaymentManager.Domain.Entities;
 using Encinecarlos.PaymentManager.Domain.Interfaces;
 using Encinecarlos.PaymentManager.Infrastructure.Data;
-using Encinecarlos.PaymentManager.Infrastructure.Repositories;
+using Encinecarlos.PaymentManager.Infrastructure.Data.Repositories;
 using Microsoft.EntityFrameworkCore;
 
 namespace Encinecarlos.PàymentManager.Api.Extensions
@@ -12,7 +13,7 @@ namespace Encinecarlos.PàymentManager.Api.Extensions
         {
             services.AddDbContext<DataContext>();
 
-            services.AddScoped<IRepository<Category, Guid>, CategoryRepository>();
+            services.AddScoped<ICategoryRepository, CategoryRepository>();
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using Encinecarlos.PaymentManager.Application.Categories.dto;
+using Encinecarlos.PaymentManager.Application.Categories.Query.Dto;
 using Encinecarlos.PaymentManager.Domain.Entities;
-using System.Security.Cryptography.X509Certificates;
+using CategoryResultDto = Encinecarlos.PaymentManager.Application.Categories.dto.CategoryResultDto;
 
 namespace Encinecarlos.PaymentManager.Application.Adapters
 {
@@ -39,14 +40,13 @@ namespace Encinecarlos.PaymentManager.Application.Adapters
             };
         }
 
-        public static GetCategoriesDto ToDto(Category category)
+        public static GetCategoryResultDto MapToGetCategoryResultDto(Category category)
         {
-            return new GetCategoriesDto
-            {
-                CategoryId = category.Id,
-                Name = category.Name,
-                Description = category.Description ?? string.Empty,
-            };
+            return new GetCategoryResultDto(
+                category.Id,
+                category.Name,
+                category.Description);
+
         }
     }
 }
